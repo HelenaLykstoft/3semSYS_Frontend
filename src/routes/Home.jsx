@@ -15,6 +15,7 @@ const Home = () => {
                            aria-describedby="search-addon"/>
                     <button type="button" className="btn btn-outline-primary">search</button>
                 </div>
+
                 <br/>
                 <p>If you want pollution data, please check this box:</p>
                 <div className="form-check">
