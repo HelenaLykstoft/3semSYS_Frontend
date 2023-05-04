@@ -3,24 +3,40 @@ import React from 'react';
 const Home = () => {
 
     return (
-        <div className="row featurette">
-            <div className="col-md-7 order-md-2">
-
-                <h1 className="featurette-heading">Welcome Page:
-                    <span className="text-muted"> Thanks for checking our WEB-Client!</span>
+        <div className="row featurette" class="row justify-content-center">
+            <div className="col-md-10">
+                <h1 className="featurette-heading">Weather App:
+                    <span className="text-muted"> Here you can search for weather</span>
                 </h1>
-
-                <h3>This is the Frontend template for CA2.
-
-                    by Felicia, Jamie, Isak & Helena
-
-                    If you wish to use the Frontend application, these are the pages you will need to change:</h3>
-
-                <p className="lead">1:  In src/routes, you will need to add a jsx-file for your api.
-                    -> Use the "Joke.jsx"-file as template if needed</p>
-                <p>2:   In src/App.jsx you will need to add the routes to the return method</p>
-                <p>3:   In src/settings.js you will need to add the URL as a const.</p>
-                <p>4:   After you have added the url's to settings.js in step 3, you will need to import the urls 2 places: top of apiFacade.jsx and your newly created routes-file from point 1.</p>
+                <br/>
+                <h4 class="text-center">Below you can search for a city and see the weather:</h4>
+                <div className="input-group">
+                    <input type="search" className="form-control rounded" placeholder="Search" aria-label="Search"
+                           aria-describedby="search-addon"/>
+                    <button type="button" className="btn btn-outline-primary">search</button>
+                </div>
+                <br/>
+                <p>If you want pollution data, please check this box:</p>
+                <div className="form-check">
+                    <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
+                        <label className="form-check-label" htmlFor="flexCheckDefault">
+                            Pollution information
+                        </label>
+                </div>
+                <br/>
+                <p>If you want to get reccomendations on activities, please check this box:</p>
+                <div className="form-check">
+                    <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
+                    <label className="form-check-label" htmlFor="flexCheckDefault">
+                        Reccomended activities
+                    </label>
+                </div>
+                <br/>
+                <br/>
+                <p className="lead">Pretty text</p>
+                <p className="lead">More</p>
+                <p className="lead">Even more</p>
+                <p className="lead">A lot more</p>
 
             </div>
         </div>

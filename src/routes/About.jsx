@@ -20,13 +20,13 @@ useEffect( () => {
 },[user]);
 
     return (
-        <div>
-            {dataFromServer}
-            <h1>About Section </h1>
-            <h3>Thanks for checking out about!</h3>
-            <h3>This text is only visible on the about page! amazing right?!</h3>
-            <h4>We hope you enjoy!</h4>
-
+        <div className="row featurette" className="row justify-content-center">
+            <div className="col-md-10">
+                <h1 className="featurette-heading">About page:
+                    <span className="text-muted"> Thanks for checking out about!</span>
+                </h1>
+            <p className="lead">Text here</p>
+            </div>
         </div>
     );
 };
