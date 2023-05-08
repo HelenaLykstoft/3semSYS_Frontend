@@ -1,5 +1,5 @@
 .header {
-    color: blueviolet;
+    color: red;
 }
 
 /* For the home.jsx page */
@@ -8,6 +8,10 @@
 }
 .featurette-heading{
     color: darkblue;
+}
+
+.col-md-10{
+    background-color: #dbe6db;
 }
 
 

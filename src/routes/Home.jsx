@@ -1,23 +1,33 @@
 import React from 'react';
+import {useState} from "react";
+import Weather from "./Weather.jsx";
+import {Link} from "react-router-dom";
 
-const Home = () => {
+const Home = ({currentCity, setCurrentCity}) => {
+
+    const changeHandler = (event) => {
+        setCurrentCity(event.target.value);
+        //event.stopPropagation();
+    }
 
     return (
-        <div className="row featurette" class="row justify-content-center">
+        <div className="row featurette justify-content-center">
             <div className="col-md-10">
                 <h1 className="featurette-heading">Weather App:
                     <span className="text-muted"> Here you can search for weather</span>
                 </h1>
                 <br/>
-                <h4 class="text-center">Below you can search for a city and see the weather:</h4>
+                <h4 className="text-center">Below you can search for a city and see the weather:</h4>
                 <div className="input-group">
-                    <input type="search" className="form-control rounded" placeholder="Search" aria-label="Search"
+                    <input type="text" onChange={changeHandler} className="form-control rounded" placeholder="Search" aria-label="Search"
                            aria-describedby="search-addon"/>
+                    <Link to="/weather">
                     <button type="button" className="btn btn-outline-primary">search</button>
+                        </Link>
                 </div>
 
                 <br/>
-                <p>If you want pollution data, please check this box:</p>
+                <p><em>If you want pollution data, please check this box:</em></p>
                 <div className="form-check">
                     <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
                         <label className="form-check-label" htmlFor="flexCheckDefault">
@@ -25,7 +35,7 @@ const Home = () => {
                         </label>
                 </div>
                 <br/>
-                <p>If you want to get reccomendations on activities, please check this box:</p>
+                <p><em>If you want to get reccomendations on activities, please check this box:</em></p>
                 <div className="form-check">
                     <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
                     <label className="form-check-label" htmlFor="flexCheckDefault">

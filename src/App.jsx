@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react"
 import facade from "./apiFacade";
 import Header from "./components/Header.jsx";
 import About from "./routes/About.jsx";
-import Joke from "./routes/Joke.jsx";
+import Weather from "./routes/Weather.jsx";
 import {Route, Routes} from "react-router-dom";
 import Home from "./routes/Home.jsx";
 
@@ -10,6 +10,8 @@ import Home from "./routes/Home.jsx";
 function App() {
   const [loggedIn, setLoggedIn] = useState(false)
   const [user, setUser] = useState({ username: "", roles: "" });
+  const [currentCity, setCurrentCity] = useState("");
+
 
   const logout = () => {
     facade.logout();
@@ -28,9 +30,9 @@ function App() {
     <div>
       <Header loggedIn={loggedIn} login={login} user={user} logout={logout}/>
       <Routes>
-        <Route path="/" element={<Home />}/>
+        <Route path="/" element={<Home currentCity={currentCity} setCurrentCity={setCurrentCity} />}/>
         <Route path="/about" element={<About user={user} />}/>
-        <Route path="/joke" element={<Joke user={user} />}/>
+        <Route path="/weather" element={<Weather currentCity={currentCity} setCurrentCity={setCurrentCity}/>}/>
       </Routes>
     </div>
   )
