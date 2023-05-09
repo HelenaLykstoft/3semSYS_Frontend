@@ -70,7 +70,7 @@ const Weather = ({currentCity, setCurrentCity , hasPollution, setHasPollution}) 
                             <p className="lead"><strong>AQI: </strong></p>
                             <p className="lead"><strong>Status: </strong></p>
                         </>
-                        :'git'}
+                        :''}
                 </>
             ) : (
                 <p>Loading weather data...</p>
