@@ -33,7 +33,7 @@ const Weather = ({currentCity, setCurrentCity , hasPollution, setHasPollution}) 
                             description: data.weatherDTO.description,
                         });
                         if(hasPollution){
-                            set({
+                            setPollution({
                                 aqi: data.pollutionDTO.aqi,
                                 status: data.pollutionDTO.status,
                             })
@@ -67,8 +67,8 @@ const Weather = ({currentCity, setCurrentCity , hasPollution, setHasPollution}) 
                     <p className="lead"><strong>Condition: </strong>{weather.condition}</p>
                     <p className="lead"><strong>Description: </strong>{weather.description}</p>
                     {hasPollution ? <>
-                            <p className="lead"><strong>AQI: </strong></p>
-                            <p className="lead"><strong>Status: </strong></p>
+                            <p className="lead"><strong>Air quality index: </strong>{pollution.aqi}<strong> status:</strong> {pollution.status}</p>
+
                         </>
                         :''}
                 </>
