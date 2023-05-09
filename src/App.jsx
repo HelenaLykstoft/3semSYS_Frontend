@@ -11,6 +11,7 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false)
   const [user, setUser] = useState({ username: "", roles: "" });
   const [currentCity, setCurrentCity] = useState("");
+  const [hasPollution, setHasPollution] = useState(false);
 
 
   const logout = () => {
@@ -30,9 +31,9 @@ function App() {
     <div>
       <Header loggedIn={loggedIn} login={login} user={user} logout={logout}/>
       <Routes>
-        <Route path="/" element={<Home currentCity={currentCity} setCurrentCity={setCurrentCity} />}/>
+        <Route path="/" element={<Home currentCity={currentCity} setCurrentCity={setCurrentCity} hasPollution={hasPollution} setHasPollution={setHasPollution} />}/>
         <Route path="/about" element={<About user={user} />}/>
-        <Route path="/weather" element={<Weather currentCity={currentCity} setCurrentCity={setCurrentCity}/>}/>
+        <Route path="/weather" element={<Weather currentCity={currentCity} setCurrentCity={setCurrentCity} hasPollution={hasPollution} setHasPollution={setHasPollution} />}/>
       </Routes>
     </div>
   )

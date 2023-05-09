@@ -3,11 +3,23 @@ import {useState} from "react";
 import Weather from "./Weather.jsx";
 import {Link} from "react-router-dom";
 
-const Home = ({currentCity, setCurrentCity}) => {
+const Home = ({currentCity, setCurrentCity,hasPollution, setHasPollution}) => {
+
 
     const changeHandler = (event) => {
         setCurrentCity(event.target.value);
         //event.stopPropagation();
+    }
+
+    const checkboxChangePoll = (event) =>{
+        if(event.target.checked){
+            //console.log("checkbox if: "+ event.target.checked)
+            setHasPollution(event.target.checked);
+        }else {
+            //console.log("checkbox else: "+event.target.checked)
+            setHasPollution(event.target.checked);
+        }
+
     }
 
     return (
@@ -29,7 +41,7 @@ const Home = ({currentCity, setCurrentCity}) => {
                 <br/>
                 <p><em>If you want pollution data, please check this box:</em></p>
                 <div className="form-check">
-                    <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
+                    <input className="form-check-input" type="checkbox" value={hasPollution} onChange={checkboxChangePoll} id="flexCheckDefault"/>
                         <label className="form-check-label" htmlFor="flexCheckDefault">
                             Pollution information
                         </label>

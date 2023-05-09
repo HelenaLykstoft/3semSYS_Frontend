@@ -1,16 +1,26 @@
 import React, {useState, useEffect} from 'react';
 import {weatherURL} from "../settings.js";
 
-const Weather = ({currentCity, setCurrentCity}) => {
+const Weather = ({currentCity, setCurrentCity , hasPollution, setHasPollution}) => {
     const [weather, setWeather] = useState({
         cityname: "",
         temperature: "",
         condition: "",
         description: "",
     });
+    const [pollution, setPollution] = useState({
+        aqi: "",
+        status: "",
+    });
+
 
     useEffect(() => {
         const getWeather = () => {
+            if(hasPollution){
+                console.log("true");
+            }else {
+                console.log("false");
+            }
             console.log(currentCity);
             if (currentCity !== "") {
                 fetch(weatherURL + "/" + currentCity)
@@ -22,6 +32,12 @@ const Weather = ({currentCity, setCurrentCity}) => {
                             condition: data.weatherDTO.condition,
                             description: data.weatherDTO.description,
                         });
+                        if(hasPollution){
+                            set({
+                                aqi: data.pollutionDTO.aqi,
+                                status: data.pollutionDTO.status,
+                            })
+                        }
                         console.log(data);
                     })
                     .catch(err => {
@@ -50,6 +66,11 @@ const Weather = ({currentCity, setCurrentCity}) => {
                     <p className="lead"><strong>Temperature: </strong>{weather.temperature}</p>
                     <p className="lead"><strong>Condition: </strong>{weather.condition}</p>
                     <p className="lead"><strong>Description: </strong>{weather.description}</p>
+                    {hasPollution ? <>
+                            <p className="lead"><strong>AQI: </strong></p>
+                            <p className="lead"><strong>Status: </strong></p>
+                        </>
+                        :''}
                 </>
             ) : (
                 <p>Loading weather data...</p>
