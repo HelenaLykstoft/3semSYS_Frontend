@@ -5,6 +5,7 @@ import About from "./routes/About.jsx";
 import Weather from "./routes/Weather.jsx";
 import {Route, Routes} from "react-router-dom";
 import Home from "./routes/Home.jsx";
+import FAQ from "./routes/FAQ.jsx";
 
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home currentCity={currentCity} setCurrentCity={setCurrentCity} hasPollution={hasPollution} setHasPollution={setHasPollution} />}/>
         <Route path="/about" element={<About user={user} />}/>
+        <Route path="/FAQ" element={<FAQ />}/>
         <Route path="/weather" element={<Weather currentCity={currentCity} setCurrentCity={setCurrentCity} hasPollution={hasPollution} setHasPollution={setHasPollution} />}/>
       </Routes>
     </div>
