@@ -1,8 +1,5 @@
-.header {
-    color: red;
-}
 
-/* For the home.jsx page */
+/* For the jsx pages */
 .text-muted {
     color: lightgray;
 }
@@ -10,8 +7,9 @@
     color: darkblue;
 }
 
+/* Background color or the column */
 .col-md-10{
-    background-color: #dbe6db;
+    background-color: white;
 }
 
 
@@ -25,13 +23,13 @@
     padding: 10px;
 }
 
-/* For the router */
+/* For the header bar */
 ul.header {
   list-style-type: none;
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: lightblue;
+  background-color: powderblue;
   width: 100%;
  }
  
@@ -77,3 +75,69 @@ ul.header {
   border-radius: 4px;
   cursor: pointer;
 }
+
+/* display this row with flex and use wrap (= respect columns' widths) */
+
+.row-flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+/* vertical spacing between columns */
+
+[class*="col-"] {
+    margin-bottom: 30px;
+}
+
+.content {
+    height: 100%;
+    padding: 20px 20px 10px;
+    color: #fff;
+}
+
+
+/* Demo backgrounds and styling*/
+
+.colour-1 {
+    background: #4B6389;
+}
+
+.colour-2 {
+    background: 	#b0b8ce;
+}
+
+.colour-3 {
+    background: #022954;
+}
+
+.colour-4 {
+    background: #6984B1;
+}
+
+.colour-5 {
+    background: #505a74;
+}
+
+.colour-6 {
+    background: #a3c3e7;
+}
+
+.colour-7{
+    background: #94A7C7;
+}
+
+.colour-8{
+    background: #284F8F;
+}
+
+body {
+    font-family: Roboto, sans-serif;
+}
+
+.content h3 {
+    margin-top: 0px;
+    font-weight: 300;
+}
+
+
