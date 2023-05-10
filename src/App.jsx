@@ -6,6 +6,7 @@ import Weather from "./routes/Weather.jsx";
 import {Route, Routes} from "react-router-dom";
 import Home from "./routes/Home.jsx";
 import FAQ from "./routes/FAQ.jsx";
+import Footer from "./components/Footer.jsx";
 
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
         <Route path="/FAQ" element={<FAQ />}/>
         <Route path="/weather" element={<Weather currentCity={currentCity} setCurrentCity={setCurrentCity} hasPollution={hasPollution} setHasPollution={setHasPollution} />}/>
       </Routes>
+      <Footer className="bg-dark text-center text-lg-start text-white"/>
     </div>
   )
 }

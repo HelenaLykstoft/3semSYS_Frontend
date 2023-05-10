@@ -60,9 +60,9 @@ const Home = ({currentCity, setCurrentCity,hasPollution, setHasPollution}) => {
                 <p className="lead">More</p>
                 <p className="lead">Even more</p>
                 <p className="lead">A lot more</p>
-
             </div>
         </div>
+
     );
 };
 
