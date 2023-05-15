@@ -57,6 +57,14 @@ ul.header {
   float: right;
 }
 
+.logininput{
+    background: transparent;
+}
+
+::placeholder{
+    color: white;
+}
+
 #loggingin{
     float: right;
     padding: 10px;
@@ -65,6 +73,7 @@ ul.header {
 #loginview{
     float: right;
     padding: 10px;
+    color: darkseagreen;
 }
 
 .form input {

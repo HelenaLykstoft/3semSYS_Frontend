@@ -7,6 +7,7 @@ import {Route, Routes} from "react-router-dom";
 import Home from "./routes/Home.jsx";
 import FAQ from "./routes/FAQ.jsx";
 import Footer from "./components/Footer.jsx";
+import SignUp from "./routes/SignUp.jsx";
 
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
         <Route path="/about" element={<About user={user} />}/>
         <Route path="/FAQ" element={<FAQ />}/>
         <Route path="/weather" element={<Weather currentCity={currentCity} setCurrentCity={setCurrentCity} hasPollution={hasPollution} setHasPollution={setHasPollution} hasActivities={hasActivities} setHasActivities={setHasActivities}  />}/>
+        <Route path="/signup" element={<SignUp />}/>
       </Routes>
       <Footer className="bg-dark text-center text-lg-start text-white"/>
     </div>

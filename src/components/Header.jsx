@@ -4,7 +4,7 @@ import LoggedIn from "./LoggedIn.jsx";
 import LogIn from "./LoginForm.jsx";
 
 
-const Header = ({loggedIn, login, logout}) => {
+const Header = ({loggedIn, login, logout, user}) => {
     return (
         <header>
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark">

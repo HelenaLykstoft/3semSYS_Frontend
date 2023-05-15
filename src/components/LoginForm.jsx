@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import {Link} from "react-router-dom";
 
 function LogIn({ login, logout}) {
     const init = { username: "", password: "" };
@@ -14,11 +15,14 @@ function LogIn({ login, logout}) {
   
     return (
       <div>
-        <form id="loggingin" onChange={onChange} >
-          <input placeholder="Username" id="username" />
-          <input placeholder="Password" id="password" />
-          <button onClick={performLogin} className="btn btn-outline-primary">Login</button>
-        </form>
+          <form id="loggingin" onChange={onChange} >
+          <input className="logininput" placeholder="Username" id="username" />
+          <input className="logininput" placeholder="Password" id="password" />
+          <button onClick={performLogin} className="btn btn-outline-warning">Login</button>
+              <Link to="/signup">
+              <button className="btn btn-outline-info" >Sign up</button>
+              </Link>
+          </form>
       </div>
     )
   }

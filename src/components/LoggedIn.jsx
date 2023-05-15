@@ -14,7 +14,6 @@ function LoggedIn({user, logout}){
   
     return (
       <div>
-        {/*<h3>{dataFromServer}</h3>*/}
         <div id="loginview">{user.username} with roles: {user.roles} <button onClick={logout} className="btn btn-outline-primary">Logout</button></div>
       </div>
     )
