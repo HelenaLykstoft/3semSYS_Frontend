@@ -56,6 +56,17 @@ ul.header {
   padding: 14px 16px;
   float: right;
 }
+
+#loggingin{
+    float: right;
+    padding: 10px;
+}
+
+#loginview{
+    float: right;
+    padding: 10px;
+}
+
 .form input {
   width: 200px;
   padding: 12px 20px;

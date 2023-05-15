@@ -1,8 +1,10 @@
 import {NavLink} from "react-router-dom";
 import React from "react";
+import LoggedIn from "./LoggedIn.jsx";
+import LogIn from "./LoginForm.jsx";
 
 
-const Header = () => {
+const Header = ({loggedIn, login, logout}) => {
     return (
         <header>
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -31,6 +33,12 @@ const Header = () => {
                                 <NavLink className="nav-link" activeClassName="active" to="/FAQ">FAQ</NavLink>
                             </li>
                         </ul>
+                    </div>
+                    <div className="float-right">
+                        {!loggedIn ? (<LogIn login={login}/>) :
+                            (<>
+                                <LoggedIn user={user} logout={logout}/>
+                            </>)}
                     </div>
                 </div>
             </nav>
