@@ -1,8 +1,48 @@
 import React from 'react';
-
+import {Link, Route, useNavigate} from "react-router-dom";
+import {baseURL} from "../settings.js";
 const SignUp = () => {
+    const navigateTo = useNavigate();
 
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        const username = document.getElementById('nameInput').value;
+        const password = document.getElementById('passwordInput').value;
 
+        if (username === '' || password === '') {
+            alert('Ensure you input a value in both fields!');
+        } else {
+            const formData = {
+                username: username,
+                password: password
+            };
+
+            try {
+                const response = await fetch(baseURL + "/login/signup", {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                if (response.ok) {
+                    // Successfully sent the form data to the backend
+                    console.log('Form data sent successfully');
+                    // Reset the form fields
+                    document.getElementById('nameInput').value = '';
+                    document.getElementById('passwordInput').value = '';
+
+                } else {
+                    // Failed to send the form data to the backend
+                    console.log('Failed to send form data');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+        navigateTo("/");
+    };
 
     return (
         <div className="container py-5">
@@ -11,7 +51,7 @@ const SignUp = () => {
                     <div className="card">
                         <div className="card-body">
                             <h2 className="text-center mb-4">Sign Up</h2>
-                            <form>
+                            <form id="loginform" method="post" onSubmit={handleSubmit} >
                                 <div className="form-group">
                                     <label htmlFor="nameInput">Name</label>
                                     <input type="text" className="form-control" id="nameInput" placeholder="Enter your name" />
