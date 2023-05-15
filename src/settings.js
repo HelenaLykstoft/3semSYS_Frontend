@@ -1,7 +1,7 @@
 // CHANGE THESE URL'S
-export const baseURL = "http://localhost:8080/quickstart/api";
+export const baseURL = "https://itworksonlocal.dk/tomcat/3semSYS_Backend/api";
 
-export const weatherURL = "http://localhost:8080/api/city/weather";
+export const weatherURL = "https://itworksonlocal.dk/tomcat/3semSYS_Backend/api/city/weather";
 
 
 

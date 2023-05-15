@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import {weatherURL} from "../settings.js";
 
-const Weather = ({currentCity, setCurrentCity , hasPollution, setHasPollution}) => {
+
+const Weather = ({currentCity, setCurrentCity , hasPollution, setHasPollution, hasActivities, setHasActivities}) => {
     const [weather, setWeather] = useState({
         cityname: "",
         temperature: "",
@@ -12,11 +13,24 @@ const Weather = ({currentCity, setCurrentCity , hasPollution, setHasPollution}) 
         aqi: "",
         status: "",
     });
+    // const [activity, setActivity] = useState({
+    //     activityName: "",
+    //     activityDescription: "",
+    //     isOutDoors: false,
+    // });
+    const [activity, setActivity] = useState([{
+            activityName: "",
+            activityDescription: "",
+            isOutDoors: false,
+    }]);
 
+    function getisOutdoor () {if (activity.isOutDoors){
+        return "Outdoors"
+    }else return "Indoors"}
 
     useEffect(() => {
         const getWeather = () => {
-            if(hasPollution){
+            if(hasActivities){
                 console.log("true");
             }else {
                 console.log("false");
@@ -37,6 +51,9 @@ const Weather = ({currentCity, setCurrentCity , hasPollution, setHasPollution}) 
                                 aqi: data.pollutionDTO.aqi,
                                 status: data.pollutionDTO.status,
                             })
+                        }
+                        if(hasActivities){
+                            setActivity([]=data.activityDTOList)
                         }
                         console.log(data);
                     })
@@ -68,6 +85,11 @@ const Weather = ({currentCity, setCurrentCity , hasPollution, setHasPollution}) 
                     <p className="lead"><strong>Description: </strong>{weather.description}</p>
                     {hasPollution ? <>
                             <p className="lead"><strong>Air quality index: </strong>{pollution.aqi}<strong> status:</strong> {pollution.status}</p>
+
+                        </>
+                        :''}
+                    {hasActivities ? <>
+                            <p className="lead"><strong>Activity name: </strong>{activity.activityName}<strong> Description:</strong> {activity.activityDescription}<strong> This activity is {getisOutdoor()}</strong></p>
 
                         </>
                         :''}

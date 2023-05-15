@@ -3,7 +3,7 @@ import {useState} from "react";
 import Weather from "./Weather.jsx";
 import {Link} from "react-router-dom";
 
-const Home = ({currentCity, setCurrentCity,hasPollution, setHasPollution}) => {
+const Home = ({currentCity, setCurrentCity,hasPollution, setHasPollution,hasActivities, setHasActivities}) => {
 
 
     const changeHandler = (event) => {
@@ -18,6 +18,16 @@ const Home = ({currentCity, setCurrentCity,hasPollution, setHasPollution}) => {
         }else {
             //console.log("checkbox else: "+event.target.checked)
             setHasPollution(event.target.checked);
+        }
+
+    }
+    const checkboxChangeActivity = (event) =>{
+        if(event.target.checked){
+            console.log("checkbox if: "+ event.target.checked)
+            setHasActivities(event.target.checked);
+        }else {
+            console.log("checkbox else: "+event.target.checked)
+            setHasActivities(event.target.checked);
         }
 
     }
@@ -41,17 +51,17 @@ const Home = ({currentCity, setCurrentCity,hasPollution, setHasPollution}) => {
                 <br/>
                 <p><em>If you want pollution data, please check this box:</em></p>
                 <div className="form-check">
-                    <input className="form-check-input" type="checkbox" value={hasPollution} onChange={checkboxChangePoll} id="flexCheckDefault"/>
-                        <label className="form-check-label" htmlFor="flexCheckDefault">
+                    <input className="form-check-input" type="checkbox" value={hasPollution} onChange={checkboxChangePoll} id="flexCheckPollution"/>
+                        <label className="form-check-label" htmlFor="flexCheckPollution">
                             Pollution information
                         </label>
                 </div>
                 <br/>
-                <p><em>If you want to get reccomendations on activities, please check this box:</em></p>
+                <p><em>If you want to get recommendations on activities, please check this box:</em></p>
                 <div className="form-check">
-                    <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
-                    <label className="form-check-label" htmlFor="flexCheckDefault">
-                        Reccomended activities
+                    <input className="form-check-input" type="checkbox" value={hasActivities} onChange={checkboxChangeActivity} id="flexCheckActivity"/>
+                    <label className="form-check-label" htmlFor="flexCheckActivity">
+                        Recommended activities
                     </label>
                 </div>
                 <br/>

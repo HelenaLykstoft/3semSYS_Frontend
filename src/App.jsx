@@ -14,6 +14,7 @@ function App() {
   const [user, setUser] = useState({ username: "", roles: "" });
   const [currentCity, setCurrentCity] = useState("");
   const [hasPollution, setHasPollution] = useState(false);
+  const [hasActivities, setHasActivities] = useState(false);
 
 
   const logout = () => {
@@ -33,10 +34,10 @@ function App() {
     <div>
       <Header loggedIn={loggedIn} login={login} user={user} logout={logout}/>
       <Routes>
-        <Route path="/" element={<Home currentCity={currentCity} setCurrentCity={setCurrentCity} hasPollution={hasPollution} setHasPollution={setHasPollution} />}/>
+        <Route path="/" element={<Home currentCity={currentCity} setCurrentCity={setCurrentCity} hasPollution={hasPollution} setHasPollution={setHasPollution} hasActivities={hasActivities} setHasActivities={setHasActivities}/>}/>
         <Route path="/about" element={<About user={user} />}/>
         <Route path="/FAQ" element={<FAQ />}/>
-        <Route path="/weather" element={<Weather currentCity={currentCity} setCurrentCity={setCurrentCity} hasPollution={hasPollution} setHasPollution={setHasPollution} />}/>
+        <Route path="/weather" element={<Weather currentCity={currentCity} setCurrentCity={setCurrentCity} hasPollution={hasPollution} setHasPollution={setHasPollution} hasActivities={hasActivities} setHasActivities={setHasActivities}  />}/>
       </Routes>
       <Footer className="bg-dark text-center text-lg-start text-white"/>
     </div>
