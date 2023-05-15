@@ -17,7 +17,7 @@ function LogIn({ login, logout}) {
       <div>
           <form id="loggingin" onChange={onChange} >
           <input className="logininput" placeholder="Username" id="username" />
-          <input className="logininput" placeholder="Password" id="password" />
+          <input className="logininput" placeholder="Password" id="password" type="password" />
           <button onClick={performLogin} className="btn btn-outline-warning">Login</button>
               <Link to="/signup">
               <button className="btn btn-outline-info" >Sign up</button>
