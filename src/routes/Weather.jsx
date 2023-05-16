@@ -53,7 +53,15 @@ const Weather = ({currentCity, setCurrentCity , hasPollution, setHasPollution, h
                             })
                         }
                         if(hasActivities){
-                            setActivity([]=data.activityDTOList)
+                            console.log(data.activityDTOList[0])
+                            var actiArray = [];
+
+                            for (let i = 0; i < data.activityDTOList.length; i++){
+                                actiArray.push(data.activityDTOList[i])
+                            }
+
+                            setActivity([] = actiArray)
+                            console.log("LOOK HERE !!!!! >>>> "+activity.length);
                         }
                         console.log(data);
                     })
@@ -68,6 +76,7 @@ const Weather = ({currentCity, setCurrentCity , hasPollution, setHasPollution, h
                     });
             }
         };
+
 
         getWeather();
     }, [currentCity]);
@@ -88,11 +97,26 @@ const Weather = ({currentCity, setCurrentCity , hasPollution, setHasPollution, h
 
                         </>
                         :''}
-                    {hasActivities ? <>
-                            <p className="lead"><strong>Activity name: </strong>{activity.activityName}<strong> Description:</strong> {activity.activityDescription}<strong> This activity is {getisOutdoor()}</strong></p>
+                    {hasActivities && activity.length > 0 && (
+                        <>
+                            <p className="lead"><strong>Activities:</strong></p>
+                            {activity.map((item, index) => (
+                                <div key={index}>
+                                    <p className="lead"><strong>Activity name: </strong>{item.activityName}</p>
+                                    <p className="lead"><strong>Description:</strong> {item.activityDescription}</p>
+                                    <p className="lead"><strong>This activity is {item.isOutDoors ? 'Outdoors' : 'Indoors'}</strong></p>
+                                </div>
+                            ))}
+                        </>
+                    )}
+                    {hasActivities && activity.length === 0 && (
+                        <>
+                            <p className="lead"><strong>Activities:</strong></p>
+                            <p className="lead"><strong>Oops! No activities found for {currentCity} at the moment, but stay tuned!
+                            </strong> Exciting activities will be added soon for you to enjoy. In the meantime, you can explore other parts of our website or check back later for updates.</p>
 
                         </>
-                        :''}
+                    )}
                 </>
             ) : (
                 <p>Loading weather data...</p>
