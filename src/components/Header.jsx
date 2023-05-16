@@ -12,10 +12,7 @@ const Header = ({loggedIn, login, logout, user}) => {
                 <div className="container">
                     <img src={logo} alt="Weather Quest Logo" className="logo-image" />
                     <div>
-                        <blockquote className="blockquote">
                     <h5 className="navbar-brand"><strong>Weather Quest</strong></h5>
-                        <footer className="blockquote-footer">The best weather app ever  </footer>
-                        </blockquote>
                     </div>
                     <button
                         className="navbar-toggler"

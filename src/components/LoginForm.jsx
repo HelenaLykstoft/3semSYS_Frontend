@@ -51,7 +51,7 @@ function LogIn({ login, logout}) {
                                 type="text"
                                 placeholder="Username"
                                 id="username"
-                                style={{ color: "black" }} // Set text color explicitly to black
+                                style={{ color: "black", backgroundColor: "lightgray", borderBottom: "1px solid black"}} // Set text color explicitly to black
                             />
                         </li>
                         <li>
@@ -60,7 +60,7 @@ function LogIn({ login, logout}) {
                                 type="password"
                                 placeholder="Password"
                                 id="password"
-                                style={{ color: "black" }} // Set text color explicitly to black
+                                style={{ color: "black", backgroundColor: "lightgray" }} // Set text color explicitly to black
                             />
                         </li>
                         <li className="d-flex justify-content-center align-items-center">
