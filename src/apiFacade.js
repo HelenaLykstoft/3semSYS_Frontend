@@ -21,6 +21,12 @@ const fetchData = (ressource) => {
     const options = makeOptions("GET",true); //True add's the token
    return fetch(baseURL + ressource, options).then(handleHttpErrors);
 }
+
+// ! FOR SEARCH HISTORY
+const fetchCityHistory = (username) => {
+    const options = makeOptions("GET",true); //True add's the token
+   return fetch(baseURL + "/searchhistory/"+username, options).then(handleHttpErrors);
+}
 const makeOptions= (method,addToken,body) =>{
    var opts = {
      method: method,
@@ -73,6 +79,7 @@ function readJwtToken (token) {
      logout,
      fetchData,
      readJwtToken,
+     fetchCityHistory,
  }
 }
 const facade = apiFacade();

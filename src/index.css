@@ -8,8 +8,16 @@
 }
 
 /* Background color or the column */
-.col-md-10{
-    background-color: white;
+
+
+/* For the navbar */
+.navbar{
+    background-color: #4B6389;
+}
+/* For the logo */
+.logo-image {
+    width: 50px; /* Adjust the desired width */
+    height: 40px; /* Adjust the desired height */
 }
 
 
@@ -18,6 +26,8 @@
     float: right;
     padding: 10px;
 }
+
+
 #loggingin{
     float: right;
     padding: 10px;
@@ -49,7 +59,6 @@ ul.header {
  }
 
 .loggedin { 
-  color: whitesmoke;
   text-align: center;
   display: block;
   padding: 14px 16px;
@@ -57,11 +66,11 @@ ul.header {
 }
 
 .logininput{
-    background: transparent;
+    background: blueviolet;
 }
 
 ::placeholder{
-    color: white;
+    color: slategrey;
 }
 
 #loggingin{
