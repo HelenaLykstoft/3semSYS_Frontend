@@ -39,9 +39,9 @@ function App() {
         <Route path="/" element={<Home currentCity={currentCity} setCurrentCity={setCurrentCity} hasPollution={hasPollution} setHasPollution={setHasPollution} hasActivities={hasActivities} setHasActivities={setHasActivities}/>}/>
         <Route path="/about" element={<About user={user} />}/>
         <Route path="/FAQ" element={<FAQ />}/>
-        <Route path="/weather" element={<Weather currentCity={currentCity} setCurrentCity={setCurrentCity} hasPollution={hasPollution} setHasPollution={setHasPollution} hasActivities={hasActivities} setHasActivities={setHasActivities}  />}/>
+        <Route path="/weather" element={<Weather user={user} currentCity={currentCity} setCurrentCity={setCurrentCity} hasPollution={hasPollution} setHasPollution={setHasPollution} hasActivities={hasActivities} setHasActivities={setHasActivities}  />}/>
         <Route path="/signup" element={<SignUp />}/>
-        <Route path="/history" element={loggedIn ? <History /> : <Home />}/>
+        <Route path="/history" element={loggedIn ? <History user={user}  /> : <Home />}/>
       </Routes>
       <Footer className="bg-dark text-center text-lg-start text-white"/>
     </div>

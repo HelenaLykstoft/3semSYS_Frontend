@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {weatherURL} from "../settings.js";
 
 
-const Weather = ({currentCity, setCurrentCity , hasPollution, setHasPollution, hasActivities, setHasActivities}) => {
+const Weather = ({user, currentCity, setCurrentCity , hasPollution, setHasPollution, hasActivities, setHasActivities}) => {
     const [weather, setWeather] = useState({
         cityname: "",
         temperature: "",
@@ -28,57 +28,107 @@ const Weather = ({currentCity, setCurrentCity , hasPollution, setHasPollution, h
         return "Outdoors"
     }else return "Indoors"}
 
-    useEffect(() => {
-        const getWeather = () => {
-            if(hasActivities){
-                console.log("true");
-            }else {
-                console.log("false");
-            }
-            console.log(currentCity);
-            if (currentCity !== "") {
-                fetch(weatherURL + "/" + currentCity)
-                    .then(response => response.json())
-                    .then(data => {
-                        setWeather({
-                            cityname: data.cityname,
-                            temperature: data.weatherDTO.temperature,
-                            condition: data.weatherDTO.condition,
-                            description: data.weatherDTO.description,
-                        });
-                        if(hasPollution){
-                            setPollution({
-                                aqi: data.pollutionDTO.aqi,
-                                status: data.pollutionDTO.status,
-                            })
-                        }
-                        if(hasActivities){
-                            console.log(data.activityDTOList[0])
-                            var actiArray = [];
-
-                            for (let i = 0; i < data.activityDTOList.length; i++){
-                                actiArray.push(data.activityDTOList[i])
-                            }
-
-                            setActivity([] = actiArray)
-                            console.log("LOOK HERE !!!!! >>>> "+activity.length);
-                        }
-                        console.log(data);
-                    })
-                    .catch(err => {
-                        setWeather({
-                            cityname: "Could not find city: " + currentCity,
-                            temperature: "",
-                            condition: "",
-                            description: "",
-                        });
-                        console.error(err);
+    const getWeatherWhenLoggedIn = () => {
+        if(hasActivities){
+            console.log("true");
+        }else {
+            console.log("false");
+        }
+        console.log(currentCity);
+        if (currentCity !== "") {
+            fetch(weatherURL + "/" + currentCity + "/" + user.username)
+                .then(response => response.json())
+                .then(data => {
+                    setWeather({
+                        cityname: data.cityname,
+                        temperature: data.weatherDTO.temperature,
+                        condition: data.weatherDTO.condition,
+                        description: data.weatherDTO.description,
                     });
-            }
-        };
+                    if(hasPollution){
+                        setPollution({
+                            aqi: data.pollutionDTO.aqi,
+                            status: data.pollutionDTO.status,
+                        })
+                    }
+                    if(hasActivities){
+                        var actiArray = [];
 
+                        for (let i = 0; i < data.activityDTOList.length; i++){
+                            actiArray.push(data.activityDTOList[i])
+                        }
 
-        getWeather();
+                        setActivity([] = actiArray)
+                    }
+                })
+                .catch(err => {
+                    setWeather({
+                        cityname: "Could not find city: " + currentCity,
+                        temperature: "",
+                        condition: "",
+                        description: "",
+                    });
+                    console.error(err);
+                });
+        }
+        console.log("The getWeatherIfLoggedIn has been run");
+
+    };
+    const getWeather = () => {
+        if(hasActivities){
+            console.log("true");
+        }else {
+            console.log("false");
+        }
+        console.log(currentCity);
+        if (currentCity !== "") {
+            fetch(weatherURL + "/" + currentCity)
+                .then(response => response.json())
+                .then(data => {
+                    setWeather({
+                        cityname: data.cityname,
+                        temperature: data.weatherDTO.temperature,
+                        condition: data.weatherDTO.condition,
+                        description: data.weatherDTO.description,
+                    });
+                    if(hasPollution){
+                        setPollution({
+                            aqi: data.pollutionDTO.aqi,
+                            status: data.pollutionDTO.status,
+                        })
+                    }
+                    if(hasActivities){
+                        var actiArray = [];
+
+                        for (let i = 0; i < data.activityDTOList.length; i++){
+                            actiArray.push(data.activityDTOList[i])
+                        }
+
+                        setActivity([] = actiArray)
+                    }
+                })
+                .catch(err => {
+                    setWeather({
+                        cityname: "Could not find city: " + currentCity,
+                        temperature: "",
+                        condition: "",
+                        description: "",
+                    });
+                    console.error(err);
+                });
+        }
+        console.log("The getWeather has been run");
+    };
+
+    useEffect(() => {
+
+        if (user.username !== ""){
+            getWeatherWhenLoggedIn();
+            console.log("user logged in");
+        } else {
+            getWeather();
+            console.log("user not logged in");
+        }
     }, [currentCity]);
 
     return (
@@ -93,7 +143,7 @@ const Weather = ({currentCity, setCurrentCity , hasPollution, setHasPollution, h
                     <p className="lead"><strong>Condition: </strong>{weather.condition}</p>
                     <p className="lead"><strong>Description: </strong>{weather.description}</p>
                     {hasPollution ? <>
-                            <p className="lead"><strong>Air quality index: </strong>{pollution.aqi}<strong> status:</strong> {pollution.status}</p>
+                            <p className="lead"><strong>Air quality index: </strong>{pollution.aqi}<strong> Status:</strong> {pollution.status}</p>
 
                         </>
                         :''}

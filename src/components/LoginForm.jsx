@@ -8,7 +8,7 @@ function LogIn({ login, logout}) {
 
 
     const performLogin = (evt) => {
-      evt.preventDefault();
+      //evt.preventDefault();
       login(loginCredentials.username, loginCredentials.password);
     }
 

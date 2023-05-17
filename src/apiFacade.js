@@ -1,4 +1,4 @@
-import {baseURL} from "./settings.js";
+import {baseURL, historyURL} from "./settings.js";
 function handleHttpErrors(res) {
  if (!res.ok) {
    return Promise.reject({ status: res.status, fullError: res.json() })
@@ -22,11 +22,6 @@ const fetchData = (ressource) => {
    return fetch(baseURL + ressource, options).then(handleHttpErrors);
 }
 
-// ! FOR SEARCH HISTORY
-const fetchCityHistory = (username) => {
-    const options = makeOptions("GET",true); //True add's the token
-   return fetch(baseURL + "/searchhistory/"+username, options).then(handleHttpErrors);
-}
 const makeOptions= (method,addToken,body) =>{
    var opts = {
      method: method,
@@ -79,7 +74,6 @@ function readJwtToken (token) {
      logout,
      fetchData,
      readJwtToken,
-     fetchCityHistory,
  }
 }
 const facade = apiFacade();

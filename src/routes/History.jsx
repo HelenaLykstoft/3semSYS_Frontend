@@ -1,15 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import facade from '../apiFacade';
+import {historyURL, weatherURL} from "../settings.js";
 
-const History = ({ user }) => {
+const History = ({user}) => {
     const [cityHistory, setCityHistory] = useState([]);
 
     useEffect(() => {
         // Fetch the city history data from the backend
-        facade.fetchCityHistory().then((res) => {
-                setCityHistory(res);
+        fetchCityHistory();
         });
-    });
+
+
+    const fetchCityHistory = () => {
+        fetch(historyURL + "/" + user.username)
+            .then(response => response.json())
+            .then(data => {
+                setCityHistory(data);
+            });
+    };
 
     return (
         <div className="container py-5">
@@ -17,7 +25,7 @@ const History = ({ user }) => {
                 <div className="col-md-8">
                     <div className="card">
                         <div className="card-body">
-                            <h2 className="text-center mb-4">Your search history</h2>
+                            <h2 className="text-center mb-4">Search history for: {user.username}</h2>
                             {cityHistory.length > 0 ? (
                                 <ul className="list-group">
                                     {cityHistory.map((city, index) => (
