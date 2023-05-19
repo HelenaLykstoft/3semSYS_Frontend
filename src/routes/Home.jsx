@@ -6,11 +6,13 @@ import {Link} from "react-router-dom";
 const Home = ({currentCity, setCurrentCity,hasPollution, setHasPollution,hasActivities, setHasActivities}) => {
 
 
+    // Changehandler for the input field
     const changeHandler = (event) => {
         setCurrentCity(event.target.value);
         //event.stopPropagation();
     }
 
+    // Checkbox to check if the checkbox for pollution is checked
     const checkboxChangePoll = (event) =>{
         if(event.target.checked){
             //console.log("checkbox if: "+ event.target.checked)
@@ -21,6 +23,8 @@ const Home = ({currentCity, setCurrentCity,hasPollution, setHasPollution,hasActi
         }
 
     }
+
+    // Checkbox to check if the the checkbox for activities is checked
     const checkboxChangeActivity = (event) =>{
         if(event.target.checked){
             console.log("checkbox if: "+ event.target.checked)
@@ -32,6 +36,7 @@ const Home = ({currentCity, setCurrentCity,hasPollution, setHasPollution,hasActi
 
     }
 
+    // Returns the home page
     return (
         <div className="row featurette justify-content-center">
             <div className="col-md-10">

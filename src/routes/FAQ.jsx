@@ -1,6 +1,6 @@
 import React from 'react';
 import facade from "../apiFacade.js";
-
+// This code is used to show the FAQ page
 const Faq = () => {
     return (
         <div className="container">

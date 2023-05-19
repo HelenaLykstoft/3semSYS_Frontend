@@ -19,11 +19,14 @@ function App() {
   const [hasActivities, setHasActivities] = useState(false);
 
 
+  // Login method
   const logout = () => {
     facade.logout();
     setLoggedIn(false);
     setUser({ username: "", roles: "" })
   }
+
+  // Logout method
   const login = (user, pass) => {
     facade.login(user, pass).then(() => {
       const token = facade.readJwtToken(facade.getToken());
@@ -32,6 +35,7 @@ function App() {
     });
   }
 
+  // Returns the header and the routes
   return (
     <div>
       <Header loggedIn={loggedIn} login={login} user={user} logout={logout}/>

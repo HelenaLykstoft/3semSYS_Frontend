@@ -1,9 +1,11 @@
 import React from 'react';
 import {Link, Route, useNavigate} from "react-router-dom";
 import {baseURL} from "../settings.js";
+// Signup page
 const SignUp = () => {
     const navigateTo = useNavigate();
 
+    // Handles the submit of the form
     const handleSubmit = async (event) => {
         event.preventDefault();
         const username = document.getElementById('nameInput').value;
@@ -43,7 +45,7 @@ const SignUp = () => {
         }
         navigateTo("/");
     };
-
+    // Returns the signup form
     return (
         <div className="container py-5">
             <div className="row justify-content-center">

@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import facade from '../apiFacade';
 import {historyURL, weatherURL} from "../settings.js";
-
+// This code is used to show the logged in users search history
 const History = ({user}) => {
+    // Usestate is used to set the data from the server
     const [cityHistory, setCityHistory] = useState([]);
 
+    // UseEffect is used to fetch the data from the server
     useEffect(() => {
         // Fetch the city history data from the backend
         fetchCityHistory();
         });
 
-
+    // Fetch the city history data from the backend
+    // ? Might need changing
     const fetchCityHistory = () => {
         fetch(historyURL + "/" + user.username)
             .then(response => response.json())
@@ -19,6 +22,7 @@ const History = ({user}) => {
             });
     };
 
+    // Returns the users search history
     return (
         <div className="container py-5">
             <div className="row justify-content-center">

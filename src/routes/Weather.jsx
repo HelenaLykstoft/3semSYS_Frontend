@@ -1,33 +1,33 @@
 import React, {useState, useEffect} from 'react';
 import {weatherURL} from "../settings.js";
 
-
+// Shows weather on weather page
 const Weather = ({user, currentCity, setCurrentCity , hasPollution, setHasPollution, hasActivities, setHasActivities}) => {
+    // Used to set the weather data
     const [weather, setWeather] = useState({
         cityname: "",
         temperature: "",
         condition: "",
         description: "",
     });
+    // Used to set the pollution data
     const [pollution, setPollution] = useState({
         aqi: "",
         status: "",
     });
-    // const [activity, setActivity] = useState({
-    //     activityName: "",
-    //     activityDescription: "",
-    //     isOutDoors: false,
-    // });
+    // Used to set the activity data
     const [activity, setActivity] = useState([{
             activityName: "",
             activityDescription: "",
             isOutDoors: false,
     }]);
 
+    // Used to see if the activity is indoor or outdoor
     function getisOutdoor () {if (activity.isOutDoors){
         return "Outdoors"
     }else return "Indoors"}
 
+    // Method to get the weather data if the user is logged in
     const getWeatherWhenLoggedIn = () => {
         if(hasActivities){
             console.log("true");
@@ -74,6 +74,8 @@ const Weather = ({user, currentCity, setCurrentCity , hasPollution, setHasPollut
         console.log("The getWeatherIfLoggedIn has been run");
 
     };
+
+    // Method to get the weather data if the user is not logged in
     const getWeather = () => {
         if(hasActivities){
             console.log("true");
@@ -120,6 +122,7 @@ const Weather = ({user, currentCity, setCurrentCity , hasPollution, setHasPollut
         console.log("The getWeather has been run");
     };
 
+    // UseEffect is used to fetch the data from the server from the different weather methods
     useEffect(() => {
 
         if (user.username !== ""){
@@ -131,6 +134,7 @@ const Weather = ({user, currentCity, setCurrentCity , hasPollution, setHasPollut
         }
     }, [currentCity]);
 
+    // Returns the weather data
     return (
         <div className="row featurette justify-content-center">
             <div className="col-md-10">

@@ -1,30 +1,36 @@
 import React, { useState } from "react"
 import {Link} from "react-router-dom";
-
+// This code makes our login form to a dropdown menu
 function LogIn({ login, logout}) {
+    // Usestate is used to set the data from the server
     const init = { username: "", password: "" };
     const [loginCredentials, setLoginCredentials] = useState(init);
     const [isOpen, setIsOpen] = useState(false);
 
-
+    // performLogin is used to perform the login action
     const performLogin = (evt) => {
       //evt.preventDefault();
       login(loginCredentials.username, loginCredentials.password);
     }
 
+    // toggleDropdown is used to toggle the dropdown menu
     const toggleDropdown = () => {
         setIsOpen(!isOpen);
     };
 
+    // handleLogin is used to handle the login action
     const handleLogin = (e) => {
         e.preventDefault();
         // Perform login action
         performLogin();
     };
+
+    // onChange is used to set the login credentials
     const onChange = (evt) => {
       setLoginCredentials({ ...loginCredentials,[evt.target.id]: evt.target.value })
     }
 
+    // Returns the login form as a dropdown menu
     return (
         <div>
             <form id="loggingin" onChange={onChange}>
